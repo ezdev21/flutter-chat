@@ -1,17 +1,15 @@
-import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase-auth.dart';
 
-class Auth extends ChangeNotifier {
-  bool _isLoggedIn = false;
+class AuthService {
 
-  bool get authenticated => _isLoggedIn;
+  final FirebaseAuth _auth=FirebaseAuth.instance;
+  Future signIn() async{
+    try{
+      UserCredential result=await _auth.signIn();
+      User user=result.user;
+    }
+    catch(e){
 
-  void login({Map creds}) {
-    _isLoggedIn = true;
-    notifyListeners();
-  }
-
-  void logout(Map creds) {
-    _isLoggedIn = false;
-    notifyListeners();
+    }
   }
 }
