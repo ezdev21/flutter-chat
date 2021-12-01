@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:doctorrating/screens/home_screen.dart';
+import 'package:flutter_chat/screens/home.dart';
 import 'package:provider/provider.dart';
-import 'package:doctorrating/services/auth.dart';
+import 'package:flutter_chat/services/authenticate.dart';
+
 void main() {
   runApp(MultiProvider(
     providers:[
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme:ThemeData(
         primarySwatch:Colors.blue
       ), 
-      home: HomeScreen()
+      home: Home()
     );
   }
 }
