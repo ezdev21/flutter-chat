@@ -6,17 +6,17 @@ class AuthService {
 
   final FirebaseAuth _auth=FirebaseAuth.instance;
   MyUser _user(User user){
-    if(!user){
-
-    }
-    else{
-      return user;
-    }
+    return user? MyUser(uid:user.uid,email:user.email,name:user.name) : null;
+  }
+  Sream<MyUser> get() async{
+   return _auth.onAuthStateChanged;
+          .map((User user)=>_user(user));
   }
   Future signIn() async{
     try{
       UserCredential result=await _auth.signIn();
       User user=result.user;
+      return _user(user);
     }
     catch(e){
 

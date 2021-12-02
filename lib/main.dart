@@ -2,16 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat/screens/home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_chat/services/authenticate.dart';
+import 'package:flutter_chat/models/my_user.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers:[
-     ChangeNotifierProvider(create: (context)=>Auth()),
-     Provider(create: (context)=>)
-    ],
-    child:MyApp()
-  )
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,12 +14,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'TiruHakim',
+    return StreamProvider<MyUser>.value(
+      value:AuthService().user,
+      child:MaterialApp(
+      title: 'my chat',
       theme:ThemeData(
         primarySwatch:Colors.blue
       ), 
       home: Home()
     );
+    )
   }
 }
