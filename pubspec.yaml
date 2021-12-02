@@ -37,6 +37,7 @@ dependencies:
   provider: ^6.0.1
   firebase_auth: ^0.14.0
   cloud_firestore: ^0.12.9
+  flutter_spinkit: ^4.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
