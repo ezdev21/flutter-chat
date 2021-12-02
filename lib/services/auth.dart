@@ -22,4 +22,12 @@ class AuthService {
 
     }
   }
+  Future signOut() async{
+    try{
+     return -auth.signOut();
+    }
+    catch(e){
+
+    }
+  }
 }

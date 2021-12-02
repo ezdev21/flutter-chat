@@ -18,7 +18,19 @@ class _SignInState extends State<SignIn> {
         elevation:0.0
       ),
       body:Container(
+       padding:EdgeInsets.all(20),
+       child:Form(
+        child:Column(
+         children:[
+           TextFormField(
+            onChanged:(){
 
+            },
+            
+           )
+         ]
+        ) 
+       )
       )
     );
   }
