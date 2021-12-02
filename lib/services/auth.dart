@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebse_auth.dart';
 class AuthService {
 
   final FirebaseAuth _auth=FirebaseAuth.instance;
+  
   MyUser _user(User user){
     return user? MyUser(uid:user.uid,email:user.email,name:user.name) : null;
   }

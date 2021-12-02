@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/services/auth.dart';
 
-class SignIn extends StatefulWidget {
-  SignIn({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  SignUp({Key? key}) : super(key: key);
 
   @override
-  _SignInState createState() => _SignInState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
   final AuthService _auth=AuthService();
-  String email="";
-  String password="";
+  String email='';
+  String password='';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
         backgrounColor:Colors.grey[500],
-        title:Text('sign in to flutter chat'),
+        title:Text('sign up to flutter chat'),
         centerTitle:true,
         elevation:0.0
       ),
@@ -50,7 +51,7 @@ class _SignInState extends State<SignIn> {
 
              },
              color:colors.brown[600],
-             child:Text('sign in',style:TextStyle(color:Colors.white))
+             child:Text('sign up',style:TextStyle(color:Colors.white))
            )
          ]
         ) 
