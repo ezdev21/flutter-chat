@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar:AppBar(
         backgroundColor:Colors.brown[400],
-        title:Text('Home'),
+        title:Text('Welcome ${user['name']}'),
         elevation:0.0,
         actions:[
           FlatButton.icon(

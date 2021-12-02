@@ -9,10 +9,23 @@ class AuthService {
   MyUser _user(User user){
     return user? MyUser(uid:user.uid,email:user.email,name:user.name) : null;
   }
+
   Sream<MyUser> get() async{
    return _auth.onAuthStateChanged;
           .map((User user)=>_user(user));
   }
+  
+  Future register(Str email, String password) async{
+    try{
+     UserCredential result=await _auth.createUserWithEmailAndPassword(email:email,password:password);
+     User user=result.user;
+     return _user(user);
+    }
+    catch(e){
+      return null;
+    }
+  }
+
   Future signIn() async{
     try{
       UserCredential result=await _auth.signIn();
@@ -23,6 +36,7 @@ class AuthService {
 
     }
   }
+
   Future signOut() async{
     try{
      return -auth.signOut();
