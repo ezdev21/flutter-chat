@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/services/auth.dart';
+import 'package:flutter_chat/constants.dart';
 
 class SignUp extends StatefulWidget {
   final Function toggleView;
@@ -48,7 +49,7 @@ class _SignUpState extends State<SignUp> {
                email=val;
              });
             },
-            
+            decoration:textInputDecoration.copyWith(hintText:'email',labelText:'email')
            ),
            SizedBox(height:20),
            TextFormField(
@@ -59,7 +60,7 @@ class _SignUpState extends State<SignUp> {
                password=val;
              });
             },
-            
+            decoration:textInputDecoration.copyWith(hintText:'password',labelText:'password')
            ),
            SizedBox(height:20),
            TextButton(

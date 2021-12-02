@@ -15,7 +15,7 @@ class AuthService {
           .map((User user)=>_user(user));
   }
   
-  Future register(Str email, String password) async{
+  Future register(String email, String password) async{
     try{
      UserCredential result=await _auth.createUserWithEmailAndPassword(email:email,password:password);
      User user=result.user;
@@ -26,20 +26,20 @@ class AuthService {
     }
   }
 
-  Future signIn() async{
+  Future signIn(String email, String password) async{
     try{
-      UserCredential result=await _auth.signIn();
+      UserCredential result=await _auth.signInWithEmailAndPassword(email:email,password:password);
       User user=result.user;
       return _user(user);
     }
     catch(e){
-
+      return null;
     }
   }
 
   Future signOut() async{
     try{
-     return -auth.signOut();
+     return _auth.signOut();
     }
     catch(e){
 
