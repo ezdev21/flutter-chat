@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat/services/auth.dart';
 
 class SignUp extends StatefulWidget {
-  SignUp({Key? key}) : super(key: key);
+  final Function toggleView;
+  SignUp({Key? key,this.toggleView}) : super(key: key);
 
   @override
   _SignUpState createState() => _SignUpState();
@@ -20,7 +21,16 @@ class _SignUpState extends State<SignUp> {
         backgrounColor:Colors.grey[500],
         title:Text('sign up to flutter chat'),
         centerTitle:true,
-        elevation:0.0
+        elevation:0.0,
+        actions:[
+          FlatButton.icon(
+            onPressed:(){
+              widget.toggleView();
+            },
+            icon:Icon(Icons.person),
+            label:Text('Sign In')
+          )
+        ]
       ),
       body:Container(
        padding:EdgeInsets.all(20),
