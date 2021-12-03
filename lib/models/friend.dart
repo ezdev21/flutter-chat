@@ -1,6 +1,8 @@
 class Friend{
-  String uid;
-  String name;
-  String email;
-  Friend({this.uid,this.name,this.email});
+  
+  final String uid;
+  final String name;
+  final String email;
+  final String avatar;
+  Friend({this.uid,this.name,this.email,this.avatar});
 }

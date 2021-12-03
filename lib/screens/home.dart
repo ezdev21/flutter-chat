@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
   final AuthService _auth=AuthService();
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<QuerySnapshot>.value(
+    return StreamProvider<List<Friend>>.value(
       value:DatabaseService().messages,
       child:Scaffold(
        appBar:AppBar(

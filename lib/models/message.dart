@@ -1,5 +1,6 @@
 
 class Message{
+  
   String uid;
   String user_from;
   String user_to;

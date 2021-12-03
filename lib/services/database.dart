@@ -29,13 +29,31 @@ class DatabaseService{
 
   List<Friend> friendsList(QuerySnapshot snapshot){
     return snapshot.documents.map((doc)=>{
-
-    });
+      return Friend(
+        uid:doc.data['uid'],
+        name:doc.data['name'],
+        email:doc.data['emai']
+      )
+    }).toList();
   }
   
   List<Message> messageList(QuerySnapshot snapshot){
     return snapshot.documents.map((doc)=>{
-      
-    });
+      return Message(
+        uid:doc.data['uid'],
+        user_from:doc.data['user_from'],
+        user_to:doc.data['user_to'],
+        body:doc.data['body']
+      )
+    }).toList();
   }  
+
+  Stream<List<Friend>> get friends(){
+    return friends.snapshots()
+    .map(friendList);
+  }
+  Stream<List<Message>> get messages(){
+    return messages.snapshots()
+    .map(messageList);
+  }
 }
