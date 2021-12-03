@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/constants.dart';
+import 'package:flutter_chat/loading.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -16,10 +17,25 @@ class _SignInState extends State<SignIn> {
   String password="";
   String error="";
   final _formKey=GlobalKey<FormState>();
+  bool loading=false;
+
+  String validateEmail(String value) {
+    String pattern =
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?)*$";
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Enter a valid email address';
+    else
+      return null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading?
+    Loading() 
+    : Scaffold(
       appBar:AppBar(
         backgrounColor:Colors.grey[500],
         title:Text('sign in to flutter chat'),
@@ -42,7 +58,7 @@ class _SignInState extends State<SignIn> {
         child:Column(
          children:[
            TextFormField(
-            validator:(val) => val.isEmpty ? 'email required' :null, 
+            validator:validateEmail, 
             onChanged:(val){
              setState((val){
                email=val;
@@ -65,12 +81,14 @@ class _SignInState extends State<SignIn> {
            TextButton(
              onPressed:() async{
                if(_formKey.currentState.validate()){
+                loading=true;
                 dynamic result=await _auth.signIn(email:email,password:password);
                 if(result){
                   
                 }
                 else{
                   setState((){
+                    loading=false;
                     error="invalid email or password";
                   });
                 }
