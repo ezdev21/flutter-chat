@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase-auth.dart';
 import 'package:flutter_chat/models/my_user.dart';
 import 'package:firebase_auth/firebse_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService {
 
@@ -15,10 +16,11 @@ class AuthService {
           .map((User user)=>_user(user));
   }
   
-  Future register(String email, String password) async{
+  Future register(String name,String email, String password) async{
     try{
      UserCredential result=await _auth.createUserWithEmailAndPassword(email:email,password:password);
      User user=result.user;
+     await DatabaseService(uid:user.uid).createUser(name:name,email:email,password:password)
      return _user(user);
     }
     catch(e){
