@@ -26,5 +26,16 @@ class DatabaseService{
   Stream<QuerySnapshots> get message(){
     return messages.snapshots();
   }
+
+  List<Friend> friendsList(QuerySnapshot snapshot){
+    return snapshot.documents.map((doc)=>{
+
+    });
+  }
   
+  List<Message> messageList(QuerySnapshot snapshot){
+    return snapshot.documents.map((doc)=>{
+      
+    });
+  }  
 }
