@@ -26,6 +26,7 @@ class _FriendsListState extends State<FriendsList> {
               radius:30
             ),
             title:Text(friends[index]['name'],style:TextStyle(fontSIze:20px,fontWeight:FontWEight.bold)),
+            subtitle:Text('last message'),
             trailing:Text('DATE',style:TextStyle())
           )
         }
